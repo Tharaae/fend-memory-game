@@ -1,114 +1,65 @@
+/*
+ * General Styles
+ */
+
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+  /* Background pattern from Subtle Patterns */
+  background: #ffffff url('../img/playstation-pattern.png');
+  font-family: 'Coda', cursive;
 }
 
 h1 {
-    font-weight: 800;
-    font-size: 80px;
+  font-weight: 600;
+  font-size: 80px;
 }
 
 h2 {
-    font-weight: 500;
-    font-size: 50px;
+  font-weight: 500;
+  font-size: 50px;
 }
 
 button {
-    background-color: #aaa;
-    color: #2e3d49;
-    border: solid;
-    border-width: 1px;
-    border-color: #aaa;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 5px;
-    font-weight: bold;
-    cursor: pointer;
+  background-color: #aaa;
+  color: #2e3d49;
+  border: solid;
+  border-width: 1px;
+  border-color: #aaa;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #fff;
-    border-color: #aaa;
+  background-color: #fff;
+  border-color: #aaa;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-
-/*
- * Styles for the deck of cards
- */
-
-#restart {
-  float: right;
-  margin-top: 0;
-  margin-right: 0;
-}
-
-.deck {
-    width: 660px;
-    min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
-}
-
-.deck .card {
-    height: 125px;
-    width: 125px;
-    background: #2e3d49;
-    font-size: 0;
-    color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-}
-
-.deck .card.open {
-    transform: rotateY(0);
-    background: #02b3e4;
-    cursor: default;
-}
-
-.deck .card.show {
-    font-size: 45px;
-}
-
-.deck .card.match {
-    cursor: default;
-    background: #02ccba;
-    font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 /*
@@ -116,91 +67,273 @@ button:hover {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
+  max-width: 95%;
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
 }
 
 .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+  min-width: 4em;
+  max-width: 4em;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
+.stars li {
+  list-style: none;
+  display: inline-block;
+  color: #ffd300;
 }
 
 .hide {
   display: none !important;
 }
 
-.stars li {
-    list-style: none;
-    display: inline-block;
-    color: #ffd300;
-}
-
 .moves,
 .timer {
-    display: inline-block;
-    text-align: right;
-    min-width: 6em;
-    max-width: 6em;
+  display: inline-block;
+  text-align: right;
+  min-width: 6em;
+  max-width: 6em;
 }
 
 .timer {
-    font-family: Lucida, Courier, monospace;
-    font-size: 18px;
+  font-family: Lucida, Courier, monospace;
+  font-size: 18px;
 }
 
 #moves-count {
-    font-weight: bold;
+  font-weight: bold;
 }
-/* .score-panel .restart {
-    float: right;
-    cursor: pointer;
-} */
+
+#restart {
+  float: right;
+  margin-top: 0;
+  margin-right: 0;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+  width: 660px;
+  min-height: 680px;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
+}
+
+.card-container {
+  height: 125px;
+  width: 125px;
+  display: flex;
+  position: relative;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.card div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 45px;
+  border-radius: 8px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card .front {
+  background: #02b3e4;
+  cursor: default;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  -webkit-transform: rotateY( 180deg);
+  -moz-transform: rotateY( 180deg);
+  -o-transform: rotateY( 180deg);
+  transform: rotateY( 180deg);
+}
+
+.card:hover {
+  -webkit-transform: rotateY( 45deg);
+  -moz-transform: rotateY( 45deg);
+  -o-transform: rotateY( 45deg);
+  transform: rotateY( 45deg);
+}
+
+.card .back {
+  background: #2e3d49;
+  cursor: pointer;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.card.flipped {
+  -webkit-transform: rotateY( 180deg);
+  -moz-transform: rotateY( 180deg);
+  -o-transform: rotateY( 180deg);
+  transform: rotateY( 180deg);
+}
+
+.match {
+  cursor: default;
+  background: #02ccba !important;
+  font-size: 60px !important;
+}
 
 /* Modal Container */
+
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    /* overflow: auto;  */
-    /* background-color: rgb(0,0,0); /* Fallback color */ */
-    background-color: rgba(0,0,0,0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Modal Content div */
+
 .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    /* border: 1px solid #888; */
-    width: 80%;
-    text-align: center;
-    background: #2e3d49;
-    color: #fff;
-    border-radius: 8px;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  background: #2e3d49;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 /* Modal Close Button */
+
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 25px;
-    font-weight: bold;
-    float: right;
-    cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Responsive Screen Settings */
+
+@media screen and (max-width: 685px) {
+  .deck {
+    width: 564px;
+    min-height: 572px;
+    padding: 20px;
+    margin: 0 0 1.5em;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  h1 {
+    font-size: 60px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  .deck {
+    width: 432px;
+    min-height: 440px;
+    padding: 10px;
+    margin: 0 0 1.5em;
+  }
+  .card-container {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  h1 {
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .deck {
+    width: 352px;
+    min-height: 360px;
+    padding: 10px;
+    margin: 0 0 1.5em;
+  }
+  .card-container {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .moves {
+    min-width: 5em;
+    max-width: 5em;
+  }
+  .timer {
+    min-width: 4em;
+    max-width: 4em;
+  }
+  .deck {
+    width: 312px;
+    min-height: 320px;
+    padding: 5px;
+    margin: 0 0 1em;
+  }
+  .card-container {
+    height: 70px;
+    width: 70px;
+  }
+  .match {
+    font-size: 55px !important;
+  }
 }
