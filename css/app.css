@@ -1,0 +1,206 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 80px;
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 50px;
+}
+
+button {
+    background-color: #aaa;
+    color: #2e3d49;
+    border: solid;
+    border-width: 1px;
+    border-color: #aaa;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #fff;
+    border-color: #aaa;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/*
+ * Styles for the deck of cards
+ */
+
+#restart {
+  float: right;
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 45px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 50px;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.hide {
+  display: none !important;
+}
+
+.stars li {
+    list-style: none;
+    display: inline-block;
+    color: #ffd300;
+}
+
+.moves,
+.timer {
+    display: inline-block;
+    text-align: right;
+    min-width: 6em;
+    max-width: 6em;
+}
+
+.timer {
+    font-family: Lucida, Courier, monospace;
+    font-size: 18px;
+}
+
+#moves-count {
+    font-weight: bold;
+}
+/* .score-panel .restart {
+    float: right;
+    cursor: pointer;
+} */
+
+/* Modal Container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: auto;  */
+    /* background-color: rgb(0,0,0); /* Fallback color */ */
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content div */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    /* border: 1px solid #888; */
+    width: 80%;
+    text-align: center;
+    background: #2e3d49;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+/* Modal Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
