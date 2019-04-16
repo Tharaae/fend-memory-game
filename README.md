@@ -4,6 +4,7 @@
 
 This project demonstrates how to create an interactive memory game using JS and CSS.
 Web Programming with JS - Project 3 - Memory Game
+You can play the game at [this link](https://raw.githack.com/tharaae/fend-memory-game/master/index.html).
 
 ### Game Description:
 ### -----------------
